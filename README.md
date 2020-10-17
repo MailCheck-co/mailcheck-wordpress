@@ -2,10 +2,11 @@
 
 Contributors: nosovk, mailcheckco 
 Donate link: https://www.mailcheck.co/
-Tags: email validation,  email verification, validation, verification, email check, check spam, no bounces, mailcheck
+Tags: email validation,  email verification, validation, verification, email check, check spam, no bounces, mailcheck, newsletter, forms
+Contributors: nosovk, mailcheckco
 Requires at least: 4.7.0
 Tested up to: 4.9.5
-Stable tag: 1.4
+Stable tag: 0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires PHP: 7.0
@@ -34,7 +35,7 @@ If you are looking for more detailed information of how to better use the plugin
 Search for the Mailcheck plugin via the Plugins section of your WordPress dashboard.
 Install and activate the plugin.
 
-Go to the Settings page and copy/paste the API key from [this page](https://app.mailcheck.co/dashboard/api) of your Mailcheck account. It’s required to go through the procedure once.
+Go to the Settings page and copy/paste the API key from [this page](https://app.mailcheck.co/dashboard/api) of your MailCheck account. It’s required to go through the procedure once.
 
 Manual:
 1. Upload `mailcheck-wordpress` folder to the `/wp-content/plugins/` directory
@@ -57,7 +58,7 @@ We supply the data from public sources, system search, social networks, and open
 
 = How to generate API key? =
 
-Register at https://mailcheck.co then follow to https://app.mailcheck.co/dashboard/api create a key, copy it and paste inside your plugin settings section
+Register at [https://mailcheck.co](https://mailcheck.co) then follow to [https://app.mailcheck.co/dashboard/api](https://app.mailcheck.co/dashboard/api) create a key, copy it and paste inside your plugin settings section
 
 
 == Screenshots ==
@@ -67,7 +68,7 @@ Register at https://mailcheck.co then follow to https://app.mailcheck.co/dashboa
 == Changelog ==
 
 
-= 0.5 =
+= 0.1 =
 Initial version release.
 
 
@@ -75,5 +76,5 @@ Initial version release.
 == Upgrade Notice ==
 
 
-= 1.0 =
-Various bugfixes, under the hood improvements, and new features.
+= 0.1 =
+New release, do not forget to recieve yours API key at [mailcheck.co](https://mailcheck.co) (free trial included up to 100 email for verified account)
