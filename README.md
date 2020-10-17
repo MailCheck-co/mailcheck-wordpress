@@ -1,4 +1,5 @@
 === Validate in one click ===
+
 Contributors: nosovk, mailcheckco 
 Donate link: https://www.mailcheck.co/
 Tags: email validation,  email verification, validation, verification, email check, check spam, no bounces, mailcheck
