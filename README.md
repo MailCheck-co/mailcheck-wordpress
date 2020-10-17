@@ -62,7 +62,7 @@ Register at https://mailcheck.co then follow to https://app.mailcheck.co/dashboa
 
 == Screenshots ==
 1. Settings - Simple, easy to setup integration. Just add your Mailcheck API key and choose which types of emails to accept.
-
+2. Result of validation in ACF plugin
 
 == Changelog ==
 
