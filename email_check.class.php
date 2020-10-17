@@ -92,7 +92,7 @@ class emailCheck
         }
         if (!empty($curl_result->message)) {
             $result['message'] = $curl_result->message;
-            $result['reponse'] = $curl_result;
+            $result['response'] = $curl_result;
         }
 
         return $result;
