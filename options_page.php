@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
         }
     </style>
     <div class="wrap">
-        <h1><?php _e('Email Check Settings') ?></h1>
+        <h1><?php _e('MailCheck.co Settings') ?></h1>
         <form class="ec_options" method="post" action="options.php">
             <?php settings_fields('ec-option-group'); ?>
             <?php do_settings_sections('ec-option-group'); ?>
