@@ -1,11 +1,12 @@
 <?php
-if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class emailCheck
 {
     protected $hash;
     public $trust_rate = 0.5;
 
-    function __construct($hash = false, $trust_rate = 0.5){
+    function __construct($hash = false, $trust_rate = 0.5)
+    {
         if ($hash) {
             $this->hash = $hash;
         } else {
@@ -15,29 +16,31 @@ class emailCheck
         $this->init_plugin();
     }
 
-    function init_plugin(){
-        if (get_option('ec_enable_core') == 1){
+    function init_plugin()
+    {
+        if (get_option('ec_enable_core') == 1) {
             //add_filter('acf/validate_value/type=email', 'my_acf_validate_value', 10, 4);
         }
-        if (get_option('ec_enable_acf') == 1){
-            add_filter('acf/validate_value/type=email', array($this,'validate_acf'), 10, 4);
+        if (get_option('ec_enable_acf') == 1) {
+            add_filter('acf/validate_value/type=email', array($this, 'validate_acf'), 10, 4);
         }
-        if (get_option('ec_enable_cf7') == 1){
+        if (get_option('ec_enable_cf7') == 1) {
             //add_filter('acf/validate_value/type=email', 'my_acf_validate_value', 10, 4);
         }
     }
 
-    function validate_acf($valid, $value, $field, $input_name){
+    function validate_acf($valid, $value, $field, $input_name)
+    {
         // Bail early if value is already invalid.
-        if( $valid !== true ) {
+        if ($valid !== true) {
             return $valid;
         }
 
         // Prevent value from saving if it contains the companies old name.
         $result = $this->check($value);
 
-        if( !empty($value) && !$result['check'] ) {
-            return __( 'This email have very poor trust rate.' );
+        if (!empty($value) && !$result['check']) {
+            return __('This email have very poor trust rate.');
         }
         return $valid;
     }
@@ -79,15 +82,15 @@ class emailCheck
         curl_close($ch);
         $curl_result = json_decode($curl_result);
 
-        if (!empty($curl_result->trustRate)){
-            if ($curl_result->trustRate >= $this->trust_rate){
+        if (!empty($curl_result->trustRate)) {
+            if ($curl_result->trustRate >= $this->trust_rate) {
                 $result['check'] = true;
             }
         } else {
             // truest rate = 0
             $result['check'] = false;
         }
-        if (!empty($curl_result->message)){
+        if (!empty($curl_result->message)) {
             $result['message'] = $curl_result->message;
             $result['reponse'] = $curl_result;
         }
