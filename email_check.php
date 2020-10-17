@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Email Check
+Plugin Name: Mailcheck.co
 Description: Check Email Trust Rate
 Version: 1.0
 Author: Eugene Bolikhov
