@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Mailcheck.co
+Plugin Name: MailCheck.co
 Description: Check Email Trust Rate
 Version: 1.0
 Author: Eugene Bolikhov
@@ -25,7 +25,7 @@ if (is_admin()) {
 }
 function ec_plugin_menu()
 {
-    add_options_page('EC Settings', 'Email Check', 'manage_options', 'ec-settings', 'ec_plugin_page');
+    add_options_page('EC Settings', 'MailchCheck.co', 'manage_options', 'ec-settings', 'ec_plugin_page');
 }
 
 function ec_register_settings()
