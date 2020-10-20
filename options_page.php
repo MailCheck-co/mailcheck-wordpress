@@ -25,7 +25,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
                 <tr valign="top">
                     <th scope="row"><?php _e('Error Message'); ?></th>
                     <td><input type="text" name="ec_message"
-                               value="<?php echo empty(get_option('ec_message', 'This email have very poor trust rate.')); ?>"/>
+                               value="<?php echo get_option('ec_message', 'This email have very poor trust rate.'); ?>"/>
                     </td>
                 </tr>
 
