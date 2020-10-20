@@ -2,13 +2,12 @@
 /*
 Plugin Name: MailCheck.co
 Description: Check Email Trust Rate
-Version: 0.1
+Version: 0.2
 Author: MailCheck.co, Eugene Bolikhov
 */
 
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
-
 function ec_add_plugin_page_settings_link($links)
 {
     $links['settings'] = '<a href="' .
@@ -31,6 +30,8 @@ function ec_plugin_menu()
 function ec_register_settings()
 { // whitelist options
     register_setting('ec-option-group', 'ec_hash');
+    register_setting('ec-option-group', 'ec_trust_rate');
+    register_setting('ec-option-group', 'ec_message');
     register_setting('ec-option-group', 'ec_enable_core');
     register_setting('ec-option-group', 'ec_enable_acf');
     register_setting('ec-option-group', 'ec_enable_cf7');
@@ -42,6 +43,6 @@ function ec_plugin_page()
 }
 
 
-require_once "email_check.class.php";
+require_once __DIR__ . "/email_check.class.php";
 $emailCheck = new emailCheck();
 

@@ -23,6 +23,13 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
                 </tr>
 
                 <tr valign="top">
+                    <th scope="row"><?php _e('Error Message'); ?></th>
+                    <td><input type="text" name="ec_message"
+                               value="<?php echo empty(get_option('ec_message', 'This email have very poor trust rate.')); ?>"/>
+                    </td>
+                </tr>
+
+                <tr valign="top">
                     <th scope="row"><?php _e('Trust Rate'); ?></th>
                     <td><input type="number" name="ec_trust_rate" min="0" max="1" step="0.01"
                                value="<?php echo empty(get_option('ec_trust_rate')) ? '0.5' : get_option('ec_trust_rate'); ?>"/>

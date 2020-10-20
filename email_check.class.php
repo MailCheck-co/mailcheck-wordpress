@@ -3,6 +3,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class emailCheck
 {
     protected $hash;
+    public $message = 'This email have very poor trust rate.';
     public $trust_rate = 0.5;
 
     function __construct($hash = false, $trust_rate = 0.5)
@@ -12,20 +13,28 @@ class emailCheck
         } else {
             $this->hash = get_option('ec_hash');
         }
-        $this->trust_rate = $trust_rate;
+
+        if ($trust_rate) {
+            $this->trust_rate = $trust_rate;
+        } else {
+            $this->trust_rate = get_option('ec_trust_rate', $this->trust_rate);
+        }
+
+        $this->message = get_option('ec_message', $this->message);
+
         $this->init_plugin();
     }
 
-    function init_plugin()
+    public function init_plugin()
     {
         if (get_option('ec_enable_core') == 1) {
-            //add_filter('acf/validate_value/type=email', 'my_acf_validate_value', 10, 4);
+            add_filter('registration_errors', array($this, 'validate_registration'), 10, 3 );
         }
         if (get_option('ec_enable_acf') == 1) {
             add_filter('acf/validate_value/type=email', array($this, 'validate_acf'), 10, 4);
         }
         if (get_option('ec_enable_cf7') == 1) {
-            //add_filter('acf/validate_value/type=email', 'my_acf_validate_value', 10, 4);
+            add_filter('wpcf7_validate_email*', array($this, 'validate_cf7'), 20, 2);
         }
     }
 
@@ -36,13 +45,40 @@ class emailCheck
             return $valid;
         }
 
-        // Prevent value from saving if it contains the companies old name.
-        $result = $this->check($value);
 
-        if (!empty($value) && !$result['check']) {
-            return __('This email have very poor trust rate.');
+        if (!empty($value)) {
+            $result = $this->check($value);
+
+            if (!empty($value) && !$result['check']) {
+                return __($this->message);
+            }
         }
         return $valid;
+    }
+
+    function validate_registration($errors, $sanitized_user_login, $user_email ){
+        if (!empty($user_email)) {
+            $result = $this->check($user_email);
+
+            if (!empty($user_email) && !$result['check']) {
+                $errors->add('email_error_rate', __($this->message));
+            }
+        }
+        return $errors;
+    }
+
+    function validate_cf7($cf_result, $tag){
+
+        $name = $tag['name'];
+        $email = $_POST[$name];
+
+        if (!empty($email)) {
+            $result = $this->check($email);
+            if (!$result['check']) {
+                $cf_result->invalidate($tag, __($this->message));
+            }
+        }
+        return $cf_result;
     }
 
     function check($email)
@@ -75,7 +111,7 @@ class emailCheck
             //$info = curl_getinfo($ch);
             //echo 'Took ' . $info['total_time'] . ' seconds to send a request to ' . $info['url'];
         } else {
-            echo 'Curl error: ' . curl_error($ch);
+            //echo 'Curl error: ' . curl_error($ch);
             $result['message'] = curl_error($ch);
             return $result;
         }
