@@ -36,6 +36,9 @@ class emailCheck
         if (get_option('ec_enable_cf7') == 1) {
             add_filter('wpcf7_validate_email*', array($this, 'validate_cf7'), 20, 2);
         }
+        if (get_option('ec_enable_woo') == 1) {
+            add_filter('woocommerce_after_checkout_validation', array($this, 'validate_woo'), 10, 2);
+        }
     }
 
     function validate_acf($valid, $value, $field, $input_name)
@@ -79,6 +82,18 @@ class emailCheck
             }
         }
         return $cf_result;
+    }
+
+    function validate_woo($data, $errors){
+        $email = $data['billing_email'];
+
+        if (!empty($email)) {
+            $result = $this->check($email);
+            if (!$result['check']) {
+                $errors->add('email', __($this->message));
+            }
+        }
+
     }
 
     function check($email)

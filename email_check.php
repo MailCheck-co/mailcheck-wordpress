@@ -8,6 +8,16 @@ Author: MailCheck.co, Eugene Bolikhov
 
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
+
+function ec_plugin_activate() {
+    add_option('ec_trust_rate', '0.5' );
+    add_option('ec_enable_core', 1 );
+    add_option('ec_enable_acf', 1 );
+    add_option('ec_enable_cf7', 1 );
+    add_option('ec_enable_woo', 0 );
+}
+register_activation_hook( __FILE__, 'ec_plugin_activate' );
+
 function ec_add_plugin_page_settings_link($links)
 {
     $links['settings'] = '<a href="' .
@@ -35,6 +45,7 @@ function ec_register_settings()
     register_setting('ec-option-group', 'ec_enable_core');
     register_setting('ec-option-group', 'ec_enable_acf');
     register_setting('ec-option-group', 'ec_enable_cf7');
+    register_setting('ec-option-group', 'ec_enable_woo');
 }
 
 function ec_plugin_page()

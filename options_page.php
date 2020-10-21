@@ -56,6 +56,12 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
                                value="1" <?php echo empty(get_option('ec_enable_cf7')) ? '' : 'checked="checked"'; ?> />
                     </td>
                 </tr>
+                <tr valign="top">
+                    <th scope="row"><?php _e('Enable for Woocommerce'); ?></th>
+                    <td><input type="checkbox" name="ec_enable_woo"
+                               value="1" <?php echo empty(get_option('ec_enable_woo')) ? '' : 'checked="checked"'; ?> />
+                    </td>
+                </tr>
             </table>
             <?php submit_button(); ?>
         </form>
