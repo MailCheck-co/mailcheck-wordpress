@@ -6,7 +6,7 @@ Tags: email validation,  email verification, validation, verification, email che
 Contributors: nosovk, mailcheckco, 0jekson0
 Requires at least: 4.7.0
 Tested up to: 4.9.5
-Stable tag: 0.1
+Stable tag: 0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires PHP: 7.0
@@ -22,8 +22,10 @@ Our plugin will be useful to those who are working every day to increase convers
 We created plugin that gives the most accurate data, reachable leads, we will accept those users who have submitted the valid emails through any type of forms.
 
 At the moment we integrate with:
-* ACF
 * WP-forms
+* ACF
+* Contact Form 7
+* WooCommerce
 
 You can install and use the plugin by adding an API key, generated from the account [free account](https://www.mailcheck.co).
 We aimed to help and make sure you have accurate list of the real users
@@ -77,6 +79,8 @@ Initial version release.
 
 == Upgrade Notice ==
 
+= 0.2 =
+Added WooCommerce and Contact 7 plugin integrations
 
 = 0.1 =
 New release, do not forget to recieve yours API key at [mailcheck.co](https://mailcheck.co) (free trial included up to 100 email for verified account)
