@@ -64,6 +64,8 @@ Register at [https://mailcheck.co](https://mailcheck.co) then follow to [https:/
 == Screenshots ==
 1. Settings - Simple, easy to setup integration. Just add your Mailcheck API key and choose which types of emails to accept.
 2. Result of validation in ACF plugin
+3. Result of validation in Contact 7 plugin
+4. Result of validation in WooCommerce
 
 == Changelog ==
 
