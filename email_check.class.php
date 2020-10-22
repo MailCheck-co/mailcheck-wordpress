@@ -4,9 +4,15 @@ class emailCheck
 {
     protected $hash;
     public $message = 'This email have very poor trust rate.';
-    public $trust_rate = 60;
+    public $trust_rate = 50;
+    const TRUST_LIST = array(
+        0 => '0-100 Any',
+        31 => '31-100 Risky',
+        50 => '50-100 Normal',
+        100 => '100 Very Safe',
+    );
 
-    function __construct($hash = false, $trust_rate = 60)
+    function __construct($hash = false, $trust_rate = false)
     {
         if ($hash) {
             $this->hash = $hash;
@@ -14,7 +20,7 @@ class emailCheck
             $this->hash = get_option('ec_hash');
         }
 
-        if ($trust_rate) {
+        if ($trust_rate !== false) {
             $this->trust_rate = $trust_rate;
         } else {
             $this->trust_rate = get_option('ec_trust_rate', $this->trust_rate);

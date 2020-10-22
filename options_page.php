@@ -9,6 +9,10 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
         .ec_options textarea {
             width: 400px;
         }
+        .trust_rate_holder label{
+            font-weight: bold;
+            padding-bottom: 12px;
+        }
     </style>
     <div class="wrap">
         <h1><?php _e('MailCheck.co Settings') ?></h1>
@@ -29,9 +33,24 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
                     </td>
                 </tr>
 
-                <tr valign="top">
+                <tr valign="top" class="trust_rate_holder">
                     <th scope="row"><?php _e('Trust Rate'); ?></th>
-                    <td><input type="number" name="ec_trust_rate" min="0" max="100" step="1"
+                    <td>
+                        <?php
+                        $cur_rate = get_option('ec_trust_rate', 60);
+                        $default = false;
+                        foreach (emailCheck::TRUST_LIST as $val => $label ) {
+                            echo '<label><input type="radio" class="trust_radio" name="trust_radio" value="' . $val . '" autocomplete="off" ';
+                            if ($cur_rate == $val){
+                                $default = true;
+                                echo ' checked="checked" ';
+                            }
+                            echo '>' . $label . '</label><br>';
+                        }
+                        ?>
+                        <label><input type="radio" class="trust_radio trust_custom" name="trust_radio" value="custom" autocomplete="off" <?php
+                            echo($default ? '' : ' checked="checked" '); ?>>Custom</label><br>
+                        <input type="number" name="ec_trust_rate" class="trust_input" min="0" max="100" step="1" autocomplete="off"
                                value="<?php echo get_option('ec_trust_rate', 60); ?>"/>
                     </td>
                 </tr>
@@ -66,6 +85,17 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
             <?php submit_button(); ?>
         </form>
     </div>
-<?php
-//require_once('cron.php');
-?>
+<script>
+    jQuery(document).ready(function(){
+        jQuery('.trust_radio').change(function(){
+            var v = jQuery(this).val();
+            if (v != 'custom'){
+                jQuery('.trust_input').val(v);
+            }
+        });
+        jQuery('.trust_input').change(function(){
+            jQuery('.trust_radio').prop('checked', false);
+            jQuery('.trust_radio.trust_custom').prop('checked',true);
+        })
+    });
+</script>
