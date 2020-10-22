@@ -4,9 +4,9 @@ class emailCheck
 {
     protected $hash;
     public $message = 'This email have very poor trust rate.';
-    public $trust_rate = 0.5;
+    public $trust_rate = 60;
 
-    function __construct($hash = false, $trust_rate = 0.5)
+    function __construct($hash = false, $trust_rate = 60)
     {
         if ($hash) {
             $this->hash = $hash;

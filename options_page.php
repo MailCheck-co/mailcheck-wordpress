@@ -31,8 +31,8 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
                 <tr valign="top">
                     <th scope="row"><?php _e('Trust Rate'); ?></th>
-                    <td><input type="number" name="ec_trust_rate" min="0" max="1" step="0.01"
-                               value="<?php echo empty(get_option('ec_trust_rate')) ? '0.5' : get_option('ec_trust_rate'); ?>"/>
+                    <td><input type="number" name="ec_trust_rate" min="0" max="100" step="1"
+                               value="<?php echo get_option('ec_trust_rate', 60); ?>"/>
                     </td>
                 </tr>
 
