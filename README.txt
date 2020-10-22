@@ -3,7 +3,7 @@
 Contributors: nosovk, mailcheckco 
 Donate link: https://www.mailcheck.co/
 Tags: email validation,  email verification, validation, verification, email check, check spam, no bounces, mailcheck, newsletter, forms
-Contributors: nosovk, mailcheckco
+Contributors: nosovk, mailcheckco, 0jekson0
 Requires at least: 4.7.0
 Tested up to: 4.9.5
 Stable tag: 0.1
