@@ -83,4 +83,4 @@ Initial version release.
 Added WooCommerce and Contact 7 plugin integrations
 
 = 0.1 =
-New release, do not forget to recieve yours API key at [mailcheck.co](https://mailcheck.co) (free trial included up to 100 email for verified account)
+New release, do not forget to receive yours API key at [mailcheck.co](https://mailcheck.co) (free trial included up to 100 email for verified account)
