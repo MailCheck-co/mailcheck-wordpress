@@ -9,7 +9,7 @@ class emailCheck
         0 => '0-100 Any',
         31 => '31-100 Risky',
         50 => '50-100 Normal',
-        100 => '100 Very Safe',
+        80 => '80-100 Very Safe',
     );
 
     function __construct($hash = false, $trust_rate = false)
@@ -58,7 +58,7 @@ class emailCheck
         if (!empty($value)) {
             $result = $this->check($value);
 
-            if (!empty($value) && !$result['check']) {
+            if (!$result['check']) {
                 return __($this->message);
             }
         }
@@ -69,7 +69,7 @@ class emailCheck
         if (!empty($user_email)) {
             $result = $this->check($user_email);
 
-            if (!empty($user_email) && !$result['check']) {
+            if (!$result['check']) {
                 $errors->add('email_error_rate', __($this->message));
             }
         }
