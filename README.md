@@ -7,6 +7,7 @@ That plugin integrates with:
 1. Core WP
 2. ACF Plugin
 3. Contact Form 7
+4. WooCommerce
 
 ## Core WP
 Plugins add hook inside WP core that will reject low quality emails during processing. If you allow user registration 
