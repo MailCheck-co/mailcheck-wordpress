@@ -1,6 +1,6 @@
 <?php
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
-class emailCheck
+class mailCheckCo
 {
     protected $hash;
     public $message = 'This email have very poor trust rate.';
@@ -17,32 +17,32 @@ class emailCheck
         if ($hash) {
             $this->hash = $hash;
         } else {
-            $this->hash = get_option('ec_hash');
+            $this->hash = get_option('mailcheckco_hash');
         }
 
         if ($trust_rate !== false) {
             $this->trust_rate = $trust_rate;
         } else {
-            $this->trust_rate = get_option('ec_trust_rate', $this->trust_rate);
+            $this->trust_rate = get_option('mailcheckco_trust_rate', $this->trust_rate);
         }
 
-        $this->message = get_option('ec_message', $this->message);
+        $this->message = get_option('mailcheckco_message', $this->message);
 
         $this->init_plugin();
     }
 
     public function init_plugin()
     {
-        if (get_option('ec_enable_core') == 1) {
+        if (get_option('mailcheckco_enable_core') == 1) {
             add_filter('registration_errors', array($this, 'validate_registration'), 10, 3 );
         }
-        if (get_option('ec_enable_acf') == 1) {
+        if (get_option('mailcheckco_enable_acf') == 1) {
             add_filter('acf/validate_value/type=email', array($this, 'validate_acf'), 10, 4);
         }
-        if (get_option('ec_enable_cf7') == 1) {
+        if (get_option('mailcheckco_enable_cf7') == 1) {
             add_filter('wpcf7_validate_email*', array($this, 'validate_cf7'), 20, 2);
         }
-        if (get_option('ec_enable_woo') == 1) {
+        if (get_option('mailcheckco_enable_woo') == 1) {
             add_filter('woocommerce_after_checkout_validation', array($this, 'validate_woo'), 10, 2);
         }
     }
@@ -108,33 +108,13 @@ class emailCheck
             'check' => false,
             'message' => '',
         );
-        $data['email'] = $email;
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, 'https://api.mailcheck.co/v1/singleEmail:check');
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json", "Authorization: Bearer " . $this->hash));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-        /*curl_setopt($ch, CURLOPT_VERBOSE, true);
-        $verbose = fopen('curl.log', 'w+');
-        curl_setopt($ch, CURLOPT_STDERR, $verbose);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);*/
-        $curl_result = curl_exec($ch);
-        /*echo "<pre>----------";
-        print_r($curl_result);
-        echo "</pre>";*/
+        $data['body'] = wp_json_encode(array('email' => $email));
+        $data['headers']['Content-Type'] = 'application/json';
+        $data['headers']['Authorization'] = 'Bearer ' . $this->hash;
 
-        if (!curl_errno($ch)) {
-            //$info = curl_getinfo($ch);
-            //echo 'Took ' . $info['total_time'] . ' seconds to send a request to ' . $info['url'];
-        } else {
-            //echo 'Curl error: ' . curl_error($ch);
-            $result['message'] = curl_error($ch);
-            return $result;
-        }
-        curl_close($ch);
+        $response = wp_remote_post( 'https://api.mailcheck.co/v1/singleEmail:check', $data );
+        $curl_result = wp_remote_retrieve_body( $response );
         $curl_result = json_decode($curl_result);
-
         if (!empty($curl_result->trustRate)) {
             if ($curl_result->trustRate >= $this->trust_rate) {
                 $result['check'] = true;

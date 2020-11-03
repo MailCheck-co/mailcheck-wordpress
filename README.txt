@@ -5,8 +5,8 @@ Donate link: https://www.mailcheck.co/
 Tags: email validation,  email verification, validation, verification, email check, check spam, no bounces, mailcheck, newsletter, forms
 Contributors: nosovk, mailcheckco, 0jekson0
 Requires at least: 4.7.0
-Tested up to: 4.9.5
-Stable tag: 0.2
+Tested up to: 5.5.1
+Stable tag: 0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires PHP: 7.0
