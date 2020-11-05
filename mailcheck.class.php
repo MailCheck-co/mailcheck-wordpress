@@ -76,10 +76,14 @@ class mailCheckCo
         return $errors;
     }
 
+    /*
+     * Contact Form 7 validation
+     *
+     */
     function validate_cf7($cf_result, $tag){
 
         $name = $tag['name'];
-        $email = $_POST[$name];
+        $email = sanitize_email($_POST[$name]);
 
         if (!empty($email)) {
             $result = $this->check($email);
