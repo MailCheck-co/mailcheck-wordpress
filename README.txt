@@ -71,6 +71,9 @@ Register at [https://mailcheck.co](https://mailcheck.co) then follow to [https:/
 
 == Changelog ==
 
+= 0.2 =
+Added WooCommerce and Contact 7 plugin integrations
+Added CI/CD for WP catalog autoupdate
 
 = 0.1 =
 Initial version release.
