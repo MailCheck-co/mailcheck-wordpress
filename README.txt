@@ -1,4 +1,4 @@
-=== Validate in one click ===
+=== MailCheck.co: Validate emails in one click ===
 
 Contributors: nosovk, mailcheckco 
 Donate link: https://www.mailcheck.co/
