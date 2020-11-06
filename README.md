@@ -15,12 +15,12 @@ at your site - it will be protected by MailCheck service, because it depends on 
 
 ## ACF Plugin
 ACF have special filed type email, and it will be additionally validated
-![ACF validation example](./assets/screenshot-2.jpg)
+![ACF validation example](.wordpress-org/screenshot-2.jpg)
 
 ## Contact Form 7
 If form have input with type `email` it will be validated.
-![Contact Form 7 example](./assets/screenshot-3.png)
+![Contact Form 7 example](.wordpress-org/screenshot-3.png)
 
 ## WooCommerce
 User registration in WooCommerce also validated
-![WooCommerce example](./assets/screenshot-4.png)
+![WooCommerce example](.wordpress-org/screenshot-4.png)
