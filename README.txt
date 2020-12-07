@@ -5,7 +5,7 @@ Donate link: https://www.mailcheck.co/
 Tags: email validation,  email verification, validation, verification, email check, check spam, no bounces, mailcheck, newsletter, forms
 Contributors: nosovk, mailcheckco, 0jekson0
 Requires at least: 4.7.0
-Tested up to: 5.5.1
+Tested up to: 5.5.3
 Stable tag: 0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -70,6 +70,9 @@ Register at [https://mailcheck.co](https://mailcheck.co) then follow to [https:/
 4. Result of validation in WooCommerce
 
 == Changelog ==
+
+= 0.3 =
+Updated compatibility and assets
 
 = 0.2 =
 Added WooCommerce and Contact 7 plugin integrations
