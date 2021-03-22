@@ -45,6 +45,9 @@ class mailCheckCo
         if (get_option('mailcheckco_enable_woo') == 1) {
             add_filter('woocommerce_after_checkout_validation', array($this, 'validate_woo'), 10, 2);
         }
+        if (get_option('mailcheckco_enable_elementor') == 1) {
+            add_action('elementor_pro/forms/validation/email', array($this, 'validate_elementor'), 10, 3);
+        }
     }
 
     function validate_acf($valid, $value, $field, $input_name)
@@ -101,6 +104,18 @@ class mailCheckCo
             $result = $this->check($email);
             if (!$result['check']) {
                 $errors->add('email', __($this->message));
+            }
+        }
+
+    }
+
+    function validate_elementor($field, $record, $ajax_handler){
+        $email = $field['value'];
+
+        if (!empty($email)) {
+            $result = $this->check($email);
+            if (!$result['check']) {
+                $ajax_handler->add_error( $field['id'], __($this->message) );
             }
         }
 

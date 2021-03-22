@@ -81,6 +81,12 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
                                value="1" <?php echo empty(get_option('mailcheckco_enable_woo')) ? '' : 'checked="checked"'; ?> />
                     </td>
                 </tr>
+                <tr valign="top">
+                    <th scope="row"><?php _e('Enable for Elementor'); ?></th>
+                    <td><input type="checkbox" name="mailcheckco_enable_elementor"
+                               value="1" <?php echo empty(get_option('mailcheckco_enable_elementor')) ? '' : 'checked="checked"'; ?> />
+                    </td>
+                </tr>
             </table>
             <?php submit_button(); ?>
         </form>
