@@ -24,3 +24,6 @@ If form have input with type `email` it will be validated.
 ## WooCommerce
 User registration in WooCommerce also validated
 ![WooCommerce example](.wordpress-org/screenshot-4.png)
+
+## Elementor
+AJAX form validation for Elementor based forms
