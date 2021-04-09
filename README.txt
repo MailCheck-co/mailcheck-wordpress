@@ -19,7 +19,7 @@ Be confident your mailing list contains only real emails addresses, get rid of b
 
 Our plugin will be useful to those who are working every day to increase conversion in email mailings and want to decrease bounce rate or accept only real users of all submissions. We will also be useful to those who want to know who is behind that email.
 
-We created plugin that gives the most accurate data, reachable leads, we will accept those users who have submitted the valid emails through any type of forms.
+We created a plugin that gives the most accurate data, reachable leads, and which will only accept email addresses from users who have submitted valid emails through any type of form.
 
 At the moment we integrate with:
 * WP-forms
