@@ -6,7 +6,7 @@ Tags: email validation,  email verification, validation, verification, email che
 Contributors: nosovk, mailcheckco, 0jekson0
 Requires at least: 4.7.0
 Tested up to: 5.9.2
-Stable tag: 1.0
+Stable tag: 0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires PHP: 7.0
@@ -71,6 +71,9 @@ Register at [https://mailcheck.co](https://mailcheck.co) then follow to [https:/
 4. Result of validation in WooCommerce
 
 == Changelog ==
+
+= 0.5 = 
+update compatebility
 
 = 0.4 = 
 Added Elementor integration 
