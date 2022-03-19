@@ -1,6 +1,6 @@
 # MailCheck.co Wordpress plugin
 
-Wordpress plugin that extends WP functionality with email validation.
+Wordpress [plugin](https://wordpress.org/plugins/mailcheck-co/) that extends WP functionality with email validation.
 
 That plugin integrates with:
 
@@ -8,6 +8,7 @@ That plugin integrates with:
 2. ACF Plugin
 3. Contact Form 7
 4. WooCommerce
+5. Elementor
 
 ## Core WP
 Plugins add hook inside WP core that will reject low quality emails during processing. If you allow user registration 
