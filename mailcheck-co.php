@@ -2,7 +2,7 @@
 /*
 Plugin Name: MailCheck.co
 Description: Check Email Trust Rate
-Version: 0.3
+Version: 1.0
 Author: MailCheck.co, Eugene Bolikhov
 */
 
