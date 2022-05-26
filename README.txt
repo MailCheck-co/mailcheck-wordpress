@@ -5,7 +5,7 @@ Donate link: https://www.mailcheck.co/
 Tags: email validation,  email verification, validation, verification, email check, check spam, no bounces, mailcheck, newsletter, forms
 Contributors: nosovk, mailcheckco, 0jekson0
 Requires at least: 4.7.0
-Tested up to: 5.9.2
+Tested up to: 6.0
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -27,6 +27,7 @@ At the moment we integrate with:
 * Contact Form 7
 * WooCommerce
 * Elementor
+* Mailpoet
 
 You can install and use the plugin by adding an API key, generated from the account [free account](https://www.mailcheck.co).
 We aimed to help and make sure you have accurate list of the real users
@@ -71,6 +72,12 @@ Register at [https://mailcheck.co](https://mailcheck.co) then follow to [https:/
 4. Result of validation in WooCommerce
 
 == Changelog ==
+
+= 1.1 = 
+Added Mailpoet integration
+
+= 1.0 = 
+Just deploy major version
 
 = 0.4 = 
 Added Elementor integration 

@@ -13,6 +13,11 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
             font-weight: bold;
             padding-bottom: 12px;
         }
+        .hint{
+            position: relative;
+            top:2px;
+            color: #858585;
+        }
     </style>
     <div class="wrap">
         <h1><?php _e('MailCheck.co Settings') ?></h1>
@@ -29,7 +34,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
                 <tr valign="top">
                     <th scope="row"><?php _e('Error Message'); ?></th>
                     <td><input type="text" name="mailcheckco_message"
-                               value="<?php echo get_option('mailcheckco_message', 'This email have very poor trust rate.'); ?>"/>
+                               value="<?php echo get_option('mailcheckco_message', 'Invalid email.'); ?>"/>
                     </td>
                 </tr>
 
@@ -85,6 +90,13 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
                     <th scope="row"><?php _e('Enable for Elementor'); ?></th>
                     <td><input type="checkbox" name="mailcheckco_enable_elementor"
                                value="1" <?php echo empty(get_option('mailcheckco_enable_elementor')) ? '' : 'checked="checked"'; ?> />
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <th scope="row"><?php _e('Enable for Mailpoet'); ?></th>
+                    <td><input type="checkbox" name="mailcheckco_enable_mailpoet"
+                               value="1" <?php echo empty(get_option('mailcheckco_enable_mailpoet')) ? '' : 'checked="checked"'; ?> />
+                        <span class="hint">Working only for mailpoet verisons 3.80.0+</span>
                     </td>
                 </tr>
             </table>

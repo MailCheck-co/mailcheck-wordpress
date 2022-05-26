@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class mailCheckCo
 {
     protected $hash;
-    public $message = 'This email have very poor trust rate.';
+    public $message = 'Invalid email.';
     public $trust_rate = 50;
     const TRUST_LIST = array(
         0 => '0-100 Any',
@@ -33,6 +33,10 @@ class mailCheckCo
 
     public function init_plugin()
     {
+        $api_error = get_option('mailcheckco_api_error', false);
+        if ($api_error || empty($this->hash)){
+            add_action( 'admin_notices', array($this, 'admin_notice_error') );
+        }
         if (get_option('mailcheckco_enable_core') == 1) {
             add_filter('registration_errors', array($this, 'validate_registration'), 10, 3 );
         }
@@ -48,6 +52,11 @@ class mailCheckCo
         if (get_option('mailcheckco_enable_elementor') == 1) {
             add_action('elementor_pro/forms/validation/email', array($this, 'validate_elementor'), 10, 3);
         }
+        if (get_option('mailcheckco_enable_mailpoet') == 1) {
+            add_action('mailpoet_subscription_before_subscribe', array($this, 'validate_mailpoet'), 10, 3);
+        }
+
+
     }
 
     function validate_acf($valid, $value, $field, $input_name)
@@ -134,6 +143,7 @@ class mailCheckCo
         $response = wp_remote_post( 'https://api.mailcheck.co/v1/singleEmail:check', $data );
         $curl_result = wp_remote_retrieve_body( $response );
         $curl_result = json_decode($curl_result);
+
         if (!empty($curl_result->trustRate)) {
             if ($curl_result->trustRate >= $this->trust_rate) {
                 $result['check'] = true;
@@ -142,12 +152,39 @@ class mailCheckCo
             // truest rate = 0
             $result['check'] = false;
         }
+        $result['code'] = $curl_result->code;
         if (!empty($curl_result->message)) {
             $result['message'] = $curl_result->message;
             $result['response'] = $curl_result;
+            //if ($result['code'] == '16'){
+            update_option('mailcheckco_api_error', ['message' => $curl_result->message, 'code' => $curl_result->code]);
+            //}
+        } else {
+            update_option('mailcheckco_api_error', false);
         }
 
         return $result;
 
+    }
+
+    function validate_mailpoet($data, $segmentIds, $form){
+        $email = $data['email'];
+        if (!empty($email)) {
+            $result = $this->check($email);
+            if (!$result['check']) {
+                throw new \MailPoet\UnexpectedValueException(__($this->message));
+            }
+        }
+    }
+
+    function admin_notice_error(){
+        ?>
+        <div class="notice notice-error is-dismissible">
+            <p><?php _e( 'MailcheckCo Auth problems. Please check your Auth Key and Usage Limitations.' ); ?>
+                <a href="<?php echo admin_url('options-general.php?page=mailcheckco-settings') ;?>">Here</a><br>
+                <?php _e('This message will automatically hide on next successful email check.'); ?>
+            </p>
+        </div>
+        <?php
     }
 }

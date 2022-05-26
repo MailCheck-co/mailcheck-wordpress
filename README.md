@@ -8,6 +8,8 @@ That plugin integrates with:
 2. ACF Plugin
 3. Contact Form 7
 4. WooCommerce
+5. Elementor
+6. Mailpoet
 
 ## Core WP
 Plugins add hook inside WP core that will reject low quality emails during processing. If you allow user registration 
@@ -27,3 +29,6 @@ User registration in WooCommerce also validated
 
 ## Elementor
 AJAX form validation for Elementor based forms
+
+## Mailpoet
+Mailpoet forms validation

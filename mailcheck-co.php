@@ -2,7 +2,7 @@
 /*
 Plugin Name: MailCheck.co
 Description: Check Email Trust Rate
-Version: 1.0
+Version: 1.1
 Author: MailCheck.co, Eugene Bolikhov
 */
 
@@ -16,6 +16,7 @@ function mailcheckco_plugin_activate() {
     add_option('mailcheckco_enable_cf7', 1 );
     add_option('mailcheckco_enable_woo', 0 );
     add_option('mailcheckco_enable_elementor', 0 );
+    add_option('mailcheckco_enable_mailpoet', 0 );
 }
 register_activation_hook( __FILE__, 'mailcheckco_plugin_activate' );
 
@@ -48,6 +49,7 @@ function mailcheckco_register_settings()
     register_setting('mailcheckco-option-group', 'mailcheckco_enable_cf7');
     register_setting('mailcheckco-option-group', 'mailcheckco_enable_woo');
     register_setting('mailcheckco-option-group', 'mailcheckco_enable_elementor');
+    register_setting('mailcheckco-option-group', 'mailcheckco_enable_mailpoet');
 }
 
 function mailcheckco_plugin_page()
