@@ -1,6 +1,6 @@
 # MailCheck.co Wordpress plugin
 
-Wordpress plugin that extends WP functionality with email validation.
+Wordpress [plugin](https://wordpress.org/plugins/mailcheck-co/) that extends WP functionality with email validation.
 
 That plugin integrates with:
 

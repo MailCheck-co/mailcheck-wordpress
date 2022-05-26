@@ -6,7 +6,7 @@ Tags: email validation,  email verification, validation, verification, email che
 Contributors: nosovk, mailcheckco, 0jekson0
 Requires at least: 4.7.0
 Tested up to: 6.0
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires PHP: 7.0
@@ -78,6 +78,9 @@ Added Mailpoet integration
 
 = 1.0 = 
 Just deploy major version
+
+= 0.5 = 
+update compatebility
 
 = 0.4 = 
 Added Elementor integration 
